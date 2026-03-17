@@ -1,0 +1,5 @@
+@layer components {
+  .btn-main {
+    @apply bg-primary-400;
+  }
+}

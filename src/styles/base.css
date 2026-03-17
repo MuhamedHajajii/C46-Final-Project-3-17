@@ -1,0 +1,16 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+  svg {
+    width: 20px;
+  }
+}
+
+body {
+  background: url('/images/light-patten.svg');
+  background-size: 900px;
+}
+
+@utility container {
+  @apply mx-auto;
+}

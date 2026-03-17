@@ -1,0 +1,15 @@
+<nav class="flex items-center gap-2 text-sm text-white/70 flex-wrap">
+  <a class="hover:text-white transition-colors" routerLink="/">Home</a>
+
+  @for (crumbs of breadCrumbs(); track $index) {
+    <span class="text-white/40">/</span>
+    <a [routerLink]="crumbs.url" class="hover:text-white transition-colors" href="/">{{
+      crumbs.name
+    }}</a>
+    <span class="text-white/40">/</span>
+  } @empty {
+    <span class="text-white/40">/</span>
+  }
+
+  <span class="text-white font-medium">{{ pageTitle() }}</span>
+</nav>
