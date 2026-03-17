@@ -70,42 +70,45 @@
             ><span>support@freshcart.com</span></a
           >
         </div>
-        <span class="w-px h-4 bg-gray-200"></span>
-        <div class="flex items-center gap-4">
-          <a
-            class="flex items-center gap-1.5 text-gray-600 hover:text-primary-600 transition-colors"
-            href="/login"
-            ><svg
-              data-prefix="far"
-              data-icon="user"
-              class="svg-inline--fa fa-user text-xs w-4"
-              role="img"
-              viewBox="0 0 448 512"
-              aria-hidden="true"
+
+        @if (!userToken()) {
+          <span class="w-px h-4 bg-gray-200"></span>
+          <div class="flex items-center gap-4">
+            <a
+              class="flex items-center gap-1.5 text-gray-600 hover:text-primary-600 transition-colors"
+              routerLink="/login"
+              ><svg
+                data-prefix="far"
+                data-icon="user"
+                class="svg-inline--fa fa-user text-xs w-4"
+                role="img"
+                viewBox="0 0 448 512"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M144 128a80 80 0 1 1 160 0 80 80 0 1 1 -160 0zm208 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0zM48 480c0-70.7 57.3-128 128-128l96 0c70.7 0 128 57.3 128 128l0 8c0 13.3 10.7 24 24 24s24-10.7 24-24l0-8c0-97.2-78.8-176-176-176l-96 0C78.8 304 0 382.8 0 480l0 8c0 13.3 10.7 24 24 24s24-10.7 24-24l0-8z"
+                ></path></svg
+              ><span>Sign In</span></a
+            ><a
+              class="flex items-center gap-1.5 text-gray-600 hover:text-primary-600 transition-colors"
+              routerLink="/register"
+              ><svg
+                data-prefix="fas"
+                data-icon="user-plus"
+                class="svg-inline--fa fa-user-plus text-xs"
+                role="img"
+                viewBox="0 0 640 512"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M136 128a120 120 0 1 1 240 0 120 120 0 1 1 -240 0zM48 482.3C48 383.8 127.8 304 226.3 304l59.4 0c98.5 0 178.3 79.8 178.3 178.3 0 16.4-13.3 29.7-29.7 29.7L77.7 512C61.3 512 48 498.7 48 482.3zM544 96c13.3 0 24 10.7 24 24l0 48 48 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-48 0 0 48c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-48-48 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0 0-48c0-13.3 10.7-24 24-24z"
+                ></path></svg
+              ><span>Sign Up</span></a
             >
-              <path
-                fill="currentColor"
-                d="M144 128a80 80 0 1 1 160 0 80 80 0 1 1 -160 0zm208 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0zM48 480c0-70.7 57.3-128 128-128l96 0c70.7 0 128 57.3 128 128l0 8c0 13.3 10.7 24 24 24s24-10.7 24-24l0-8c0-97.2-78.8-176-176-176l-96 0C78.8 304 0 382.8 0 480l0 8c0 13.3 10.7 24 24 24s24-10.7 24-24l0-8z"
-              ></path></svg
-            ><span>Sign In</span></a
-          ><a
-            class="flex items-center gap-1.5 text-gray-600 hover:text-primary-600 transition-colors"
-            href="/register"
-            ><svg
-              data-prefix="fas"
-              data-icon="user-plus"
-              class="svg-inline--fa fa-user-plus text-xs"
-              role="img"
-              viewBox="0 0 640 512"
-              aria-hidden="true"
-            >
-              <path
-                fill="currentColor"
-                d="M136 128a120 120 0 1 1 240 0 120 120 0 1 1 -240 0zM48 482.3C48 383.8 127.8 304 226.3 304l59.4 0c98.5 0 178.3 79.8 178.3 178.3 0 16.4-13.3 29.7-29.7 29.7L77.7 512C61.3 512 48 498.7 48 482.3zM544 96c13.3 0 24 10.7 24 24l0 48 48 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-48 0 0 48c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-48-48 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0 0-48c0-13.3 10.7-24 24-24z"
-              ></path></svg
-            ><span>Sign Up</span></a
-          >
-        </div>
+          </div>
+        }
       </div>
     </div>
   </div>
@@ -165,11 +168,90 @@
     <li>
       <a flowbiteNavbarItem routerLink="/products"> Shop </a>
     </li>
-    <li>
-      <a flowbiteNavbarItem routerLink="/categories"> Categories </a>
+    <li class="group">
+      <a flowbiteNavbarItem routerLink="/categories" class="flex items-center justify-center">
+        Categories
+        <svg
+          class="w-4 h-4 ms-1.5 -me-0.5 group-hover:-rotate-180 duration-300"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m19 9-7 7-7-7"
+          />
+        </svg>
+      </a>
+
+      <!-- Dropdown menu -->
+      <div
+        class="z-10 hidden group-hover:block group-hover:absolute bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
+      >
+        <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownHoverButton">
+          <li>
+            <a
+              href="#"
+              class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+              >Earnings</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+              >Sign out</a
+            >
+          </li>
+        </ul>
+      </div>
     </li>
     <li>
       <a flowbiteNavbarItem routerLink="/brands"> Brands </a>
+    </li>
+    <li>
+      <a
+        flowbiteNavbarItem
+        class="relative p-2.5 rounded-full hover:bg-gray-100 transition-colors group"
+        title="Cart"
+        routerLink="/cart"
+        ><svg
+          data-prefix="fas"
+          data-icon="cart-shopping"
+          class="svg-inline--fa fa-cart-shopping top-0 right-0 m-1 text-xl text-gray-500 group-hover:text-primary-600 transition-colors"
+          role="img"
+          viewBox="0 0 640 512"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M24-16C10.7-16 0-5.3 0 8S10.7 32 24 32l45.3 0c3.9 0 7.2 2.8 7.9 6.6l52.1 286.3c6.2 34.2 36 59.1 70.8 59.1L456 384c13.3 0 24-10.7 24-24s-10.7-24-24-24l-255.9 0c-11.6 0-21.5-8.3-23.6-19.7l-5.1-28.3 303.6 0c30.8 0 57.2-21.9 62.9-52.2L568.9 69.9C572.6 50.2 557.5 32 537.4 32l-412.7 0-.4-2c-4.8-26.6-28-46-55.1-46L24-16zM208 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm224 0a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+          ></path></svg
+        ><span
+          class="absolute top-0.5 right-0.5 size-[18px] rounded-full bg-primary-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white"
+          >9+</span
+        ></a
+      >
     </li>
   </div>
 </nav>

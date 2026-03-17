@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-auth-method-selector',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './auth-method-selector.component.html',
   styleUrl: './auth-method-selector.component.css',
 })
-export class AuthMethodSelectorComponent {}
+export class AuthMethodSelectorComponent {
+  isTwoColumns = input(false);
+}

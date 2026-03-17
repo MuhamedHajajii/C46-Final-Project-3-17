@@ -9,11 +9,15 @@ import { Home_Routes } from './features/home/home.routes';
 import { Checkout_Routes } from './features/checkout/checkout.routes';
 import { Brands_Routes } from './features/brands/brands.routes';
 import { Categories_Routes } from './features/categories/categories.routes';
+import { Cart_Routes } from './features/cart/cart.routes';
+import { authGuard } from './core/guards/auth.guard';
+import { loggedGuard } from './core/guards/logged.guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: GuestLayoutComponent,
+
     children: [
       {
         path: '',
@@ -31,18 +35,24 @@ export const routes: Routes = [
         path: 'categories',
         children: Categories_Routes,
       },
+      {
+        path: 'cart',
+        children: Cart_Routes,
+      },
     ],
   },
 
   {
     path: '',
     component: AuthLayoutComponent,
+    canActivate: [loggedGuard],
     children: Auth_Routes,
   },
 
   {
     path: '',
     component: UserLayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'checkout',

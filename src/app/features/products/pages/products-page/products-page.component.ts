@@ -1,20 +1,20 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
-import { ProductsService } from '../../services/products.service';
-import { IProduct } from '../../interfaces/IAllProductsResponse';
-import { CurrencyPipe, ViewportScroller } from '@angular/common';
-import { LoadingDataSpinnerComponent } from '../../../../shared/components/loading-data-spinner/loading-data-spinner.component';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { LoadingDataSpinnerComponent } from '../../../../shared/components/loading-data-spinner/loading-data-spinner.component';
+import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
+import { ProductCardComponent } from '../../../../shared/components/product-card/product-card.component';
+import { IProduct } from '../../interfaces/IAllProductsResponse';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-products-page',
   imports: [
     PageHeaderComponent,
-    RouterLink,
     NgxPaginationModule,
-    CurrencyPipe,
     LoadingDataSpinnerComponent,
+    ProductCardComponent,
   ],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css',

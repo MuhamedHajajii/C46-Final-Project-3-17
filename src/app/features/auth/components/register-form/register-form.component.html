@@ -1,1 +1,115 @@
-<p>register-form works!</p>
+<form class="space-y-7" [formGroup]="registerForm" , (ngSubmit)="onRegisterSubmit()">
+  <div class="flex flex-col gap-2">
+    <label for="name">Name*</label
+    ><input
+      id="name"
+      class="form-control border border-gray-400 focus:border-primary-400 duration-300 rounded-2xl p-3"
+      placeholder="Ali"
+      aria-invalid="false"
+      type="text"
+      formControlName="name"
+    />
+  </div>
+  <div class="flex flex-col gap-2">
+    <label for="email">Email*</label
+    ><input
+      id="email"
+      class="form-control border border-gray-400 focus:border-primary-400 duration-300 rounded-2xl p-3"
+      placeholder="ali@example.com"
+      autocomplete="email"
+      aria-invalid="false"
+      type="email"
+      formControlName="email"
+    />
+  </div>
+  <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2">
+      <label for="password">Password*</label
+      ><input
+        id="password"
+        class="form-control border border-gray-400 focus:border-primary-400 duration-300 rounded-2xl p-3"
+        placeholder="create a strong password"
+        autocomplete="new-password"
+        aria-invalid="false"
+        type="password"
+        formControlName="password"
+      />
+      <div class="password-requirements">
+        <div class="flex items-center gap-2">
+          <div
+            class="bar grow h-1 bg-gray-200 rounded-md overflow-hidden"
+            role="progressbar"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="Password strength: Weak"
+          >
+            <div
+              [style.background]="strengthColor"
+              class="progress h-full transition-all duration-300 ease-out"
+              [style.width.%]="(score() / 5) * 100"
+            ></div>
+          </div>
+          <span class="text-sm font-medium min-w-[50px]">{{ validationText() }}</span>
+        </div>
+      </div>
+      <p class="text-gray-500 -mt-2 text-xs">
+        Must be at least 8 characters with numbers and symbols
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-col gap-2">
+    <label for="rePassword">Confirm Password*</label>
+    <input
+      id="rePassword"
+      class="form-control border border-gray-400 focus:border-primary-400 duration-300 rounded-2xl p-3"
+      placeholder="confirm your password"
+      autocomplete="new-password"
+      aria-invalid="false"
+      type="password"
+      formControlName="rePassword"
+    />
+  </div>
+  <div class="flex flex-col gap-2">
+    <label for="phone">Phone Number*</label
+    ><input
+      id="phone"
+      class="form-control border border-gray-400 focus:border-primary-400 duration-300 rounded-2xl p-3"
+      placeholder="+1 234 567 8900"
+      autocomplete="tel"
+      aria-invalid="false"
+      type="tel"
+      formControlName="phone"
+    />
+  </div>
+  <div>
+    <div class="flex items-center gap-2">
+      <input id="terms" class="size-4 accent-primary-600" type="checkbox" name="terms" /><label
+        for="terms"
+        class="ms-2"
+        >I agree to the
+        <a class="text-primary-600 hover:underline" href="/terms">Terms of Service</a> and
+        <a class="text-primary-600 hover:underline" href="/privacy-policy">Privacy Policy</a>
+        *</label
+      >
+    </div>
+  </div>
+  <button
+    class="btn bg-primary-600 btn-main flex justify-center items-center text-white hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed w-full transition-colors"
+    aria-busy="false"
+  >
+    <svg
+      data-prefix="fas"
+      data-icon="user-plus"
+      class="svg-inline--fa fa-user-plus me-2"
+      role="img"
+      viewBox="0 0 640 512"
+      aria-hidden="true"
+    >
+      <path
+        fill="currentColor"
+        d="M136 128a120 120 0 1 1 240 0 120 120 0 1 1 -240 0zM48 482.3C48 383.8 127.8 304 226.3 304l59.4 0c98.5 0 178.3 79.8 178.3 178.3 0 16.4-13.3 29.7-29.7 29.7L77.7 512C61.3 512 48 498.7 48 482.3zM544 96c13.3 0 24 10.7 24 24l0 48 48 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-48 0 0 48c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-48-48 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0 0-48c0-13.3 10.7-24 24-24z"
+      ></path></svg
+    ><span>Create My Account</span>
+  </button>
+</form>
