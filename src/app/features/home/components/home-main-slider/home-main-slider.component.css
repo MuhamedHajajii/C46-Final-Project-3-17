@@ -1,0 +1,11 @@
+swiper-slide h2,
+swiper-slide p,
+swiper-slide button {
+  opacity: 0;
+  transition: 0.5s 0.5s opacity;
+}
+swiper-slide.swiper-slide-active h2,
+swiper-slide.swiper-slide-active p,
+swiper-slide.swiper-slide-active button {
+  opacity: 1;
+}
