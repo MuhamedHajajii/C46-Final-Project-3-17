@@ -8,5 +8,6 @@
 @import './styles/base.css';
 @import './styles/button.css';
 @import './styles/theme.css';
+@import './styles/toaster.css';
 
 @import 'flowbite/src/themes/default';

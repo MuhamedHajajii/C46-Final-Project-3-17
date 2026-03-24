@@ -14,3 +14,16 @@ body {
 @utility container {
   @apply mx-auto;
 }
+
+button {
+  cursor: pointer;
+}
+
+@layer components {
+  .active-payment-method {
+    @apply w-full p-5 rounded-xl border-2 transition-all flex items-center gap-4  border-primary-500 bg-gradient-to-r from-primary-50 to-emerald-50 shadow-sm;
+  }
+  .inactive-payment-method {
+    @apply w-full p-5 rounded-xl border-2 transition-all flex items-center gap-4  border-gray-200;
+  }
+}

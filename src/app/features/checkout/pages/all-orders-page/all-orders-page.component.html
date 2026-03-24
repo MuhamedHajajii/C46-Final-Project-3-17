@@ -1,0 +1,91 @@
+<div class="p-6 max-w-7xl mx-auto">
+  <h1 class="text-3xl font-bold mb-6">Orders</h1>
+
+  @if (isLoading()) {
+    <app-loading-data-spinner />
+  } @else {
+    @if (allOrders().length === 0) {
+      <div class="text-center text-gray-500">No Orders Found</div>
+    } @else {
+      <div class="grid gap-6">
+        @for (order of allOrders(); track order._id) {
+          <!-- Order Card -->
+          <div class="bg-white shadow-md rounded-xl p-5 border">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-4">
+              <div>
+                <p class="font-semibold">Order #{{ order.id }}</p>
+                <p class="text-sm text-gray-500">
+                  {{ order.createdAt | date: 'medium' }}
+                </p>
+              </div>
+
+              <div class="flex gap-2">
+                <span
+                  class="px-3 py-1 text-sm rounded-full"
+                  [class]="
+                    order.isPaid ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                  "
+                >
+                  {{ order.isPaid ? 'Paid' : 'Unpaid' }}
+                </span>
+
+                <span
+                  class="px-3 py-1 text-sm rounded-full"
+                  [class]="
+                    order.isDelivered ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-700'
+                  "
+                >
+                  {{ order.isDelivered ? 'Delivered' : 'Pending' }}
+                </span>
+              </div>
+            </div>
+
+            <!-- User Info -->
+            <div class="mb-4 text-sm text-gray-600">
+              <p><strong>Name:</strong> {{ order.user.name }}</p>
+              <p><strong>Email:</strong> {{ order.user.email }}</p>
+              <p><strong>Phone:</strong> {{ order.user.phone }}</p>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="border-t pt-4">
+              <h3 class="font-semibold mb-3">Items</h3>
+
+              <div class="space-y-3">
+                @for (item of order.cartItems; track item._id) {
+                  <div class="flex items-center gap-4">
+                    <img
+                      [src]="item.product.imageCover"
+                      class="w-16 h-16 object-cover rounded-lg border"
+                    />
+
+                    <div class="flex-1">
+                      <p class="font-medium">{{ item.product.title }}</p>
+                      <p class="text-sm text-gray-500">Qty: {{ item.count }}</p>
+                    </div>
+
+                    <div class="font-semibold">{{ item.price }} EGP</div>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="border-t mt-4 pt-4 flex justify-between items-center">
+              <div class="text-sm text-gray-600">
+                <p>Payment: {{ order.paymentMethodType }}</p>
+                <p>Total Items: {{ getTotalItems(order) }}</p>
+              </div>
+
+              <div class="text-right">
+                <p class="text-sm text-gray-500">Total Price</p>
+                <p class="text-xl font-bold text-indigo-600">{{ order.totalOrderPrice }} EGP</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

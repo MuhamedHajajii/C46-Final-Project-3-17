@@ -3,6 +3,7 @@ import { computed, inject, Injectable, PLATFORM_ID, signal } from '@angular/core
 import { App_Apis } from '../../../core/constants/app-apis';
 import { Stored_Keys } from '../../../core/constants/stored-keys';
 import { isPlatformBrowser } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
 
 export interface IUser {
   name: string;
@@ -43,5 +44,17 @@ export class AuthService {
 
   register(userData: {}) {
     return this.http.post<IAuthResponse>(App_Apis.auth.register, userData);
+  }
+
+  logout(): void {
+    localStorage.clear();
+    this.refreshToken.set(0);
+  }
+
+  decodeToken() {
+    try {
+      const userId = (jwtDecode(this.userToken()!) as { id: string }).id;
+      localStorage.setItem(Stored_Keys.userId, userId);
+    } catch {}
   }
 }

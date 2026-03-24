@@ -1,11 +1,10 @@
-import { JsonPipe } from '@angular/common';
-import { Component, inject, isSignal, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule, RxwebValidators } from '@rxweb/reactive-form-validators'; // <-- #2 import module
 
 @Component({
   selector: 'app-register-form',
-  imports: [ReactiveFormsModule, RxReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule, RxReactiveFormsModule],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css',
 })

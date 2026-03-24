@@ -12,6 +12,7 @@ import { Categories_Routes } from './features/categories/categories.routes';
 import { Cart_Routes } from './features/cart/cart.routes';
 import { authGuard } from './core/guards/auth.guard';
 import { loggedGuard } from './core/guards/logged.guard';
+import { AllOrdersPageComponent } from './features/checkout/pages/all-orders-page/all-orders-page.component';
 
 export const routes: Routes = [
   {
@@ -57,6 +58,10 @@ export const routes: Routes = [
       {
         path: 'checkout',
         children: Checkout_Routes,
+      },
+      {
+        path: 'allorders',
+        component: AllOrdersPageComponent,
       },
     ],
   },

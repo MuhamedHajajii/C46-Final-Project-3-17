@@ -50,6 +50,7 @@ export class LoginFormComponent {
     this.isLoading.set(false);
     localStorage.setItem(Stored_Keys.token, response.token);
     this.authService.refreshToken.update((value) => value + 1);
+    this.authService.decodeToken();
     this.router.navigateByUrl(this.redirectUrl ? `/${this.redirectUrl}` : '/');
   }
 

@@ -66,7 +66,9 @@
   <div class="p-4">
     <div class="text-xs text-gray-500 mb-1 line-clamp-1">{{ prod().category.name }}</div>
     <h3 class="font-medium mb-1 cursor-pointer" title="Woman Shawl">
-      <a class="line-clamp-1" [routerLink]="[prod()._id, prod().slug]">{{ prod().title }}</a>
+      <a class="line-clamp-1" [routerLink]="['/products', prod()._id, prod().slug]">{{
+        prod().title
+      }}</a>
     </h3>
     <div class="flex items-center mb-2">
       <div class="flex text-amber-400 mr-2">
@@ -145,23 +147,28 @@
         }}</span>
       </div>
       <button
+        [disabled]="isLoading()"
         (click)="onAddToCart(prod())"
         class="h-10 w-10 rounded-full flex items-center justify-center transition bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-70"
         tabindex="0"
       >
-        <svg
-          data-prefix="fas"
-          data-icon="plus"
-          class="svg-inline--fa fa-plus"
-          role="img"
-          viewBox="0 0 448 512"
-          aria-hidden="true"
-        >
-          <path
-            fill="currentColor"
-            d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z"
-          ></path>
-        </svg>
+        @if (isLoading()) {
+          <i class="fas fa-spinner fa-spin"></i>
+        } @else {
+          <svg
+            data-prefix="fas"
+            data-icon="plus"
+            class="svg-inline--fa fa-plus"
+            role="img"
+            viewBox="0 0 448 512"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z"
+            ></path>
+          </svg>
+        }
       </button>
     </div>
   </div>

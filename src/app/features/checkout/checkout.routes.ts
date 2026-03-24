@@ -3,7 +3,7 @@ import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.compo
 
 export const Checkout_Routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: CheckoutPageComponent,
   },
 ];
